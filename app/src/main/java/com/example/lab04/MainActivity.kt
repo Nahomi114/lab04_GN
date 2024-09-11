@@ -16,6 +16,9 @@ import androidx.compose.ui.unit.sp
 import com.example.lab04.ui.theme.MyComposeAppTheme
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.FlowColumn
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -170,4 +173,16 @@ fun DefaultPreview() {
     MyComposeAppTheme {
         MainScreen()
     }
+}
+@Composable
+fun MyUpdatedTextComponent() {
+    Text(
+        text = "Updated Text",
+        style = TextStyle(
+            color = Color.Blue,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        ),
+        modifier = Modifier.padding(16.dp)
+    )
 }
