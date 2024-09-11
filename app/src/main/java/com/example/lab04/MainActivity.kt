@@ -164,4 +164,10 @@ fun ControlExamples() {
     }
 }
 
-
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    MyComposeAppTheme {
+        MainScreen()
+    }
+}
