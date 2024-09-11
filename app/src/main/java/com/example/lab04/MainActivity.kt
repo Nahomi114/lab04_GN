@@ -55,7 +55,7 @@ fun MainScreen() {
 fun TopAppBarExample() {
     TopAppBar(
         title = {
-            Text(text = "My App", fontSize = 20.sp)
+            Text(text = "Mi aplicacion", fontSize = 20.sp)
         },
         modifier = Modifier.fillMaxWidth()
     )
@@ -91,7 +91,7 @@ fun FlowRowExample() {
 @Composable
 fun FlowColumnExample() {
     Text(
-        text = "FlowColumn Example",
+        text = "Ejemplo",
         style = MaterialTheme.typography.titleMedium,
         modifier = Modifier.padding(bottom = 8.dp)
     )
