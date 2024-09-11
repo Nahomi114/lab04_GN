@@ -17,3 +17,151 @@ import com.example.lab04.ui.theme.MyComposeAppTheme
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.FlowColumn
 
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MyComposeAppTheme {
+                MainScreen()
+            }
+        }
+    }
+}
+
+@Composable
+fun MainScreen() {
+    Scaffold(
+        topBar = { TopAppBarExample() },
+        bottomBar = { BottomNavigationExample() }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(16.dp)
+        ) {
+            FlowRowExample()
+            Spacer(modifier = Modifier.height(16.dp))
+            FlowColumnExample()
+            Spacer(modifier = Modifier.height(16.dp))
+            GridExample()
+            Spacer(modifier = Modifier.height(16.dp))
+            ControlExamples()
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TopAppBarExample() {
+    TopAppBar(
+        title = {
+            Text(text = "My App", fontSize = 20.sp)
+        },
+        modifier = Modifier.fillMaxWidth()
+    )
+}
+
+@Composable
+fun BottomNavigationExample() {
+    BottomAppBar {
+        Text(text = "Bottom Navigation", modifier = Modifier.padding(16.dp))
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun FlowRowExample() {
+    Text(
+        text = "FlowRow Example",
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.padding(bottom = 8.dp)
+    )
+    FlowRow(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+        repeat(6) { index ->
+            Text(text = "Item $index", modifier = Modifier.padding(8.dp))
+        }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun FlowColumnExample() {
+    Text(
+        text = "FlowColumn Example",
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.padding(bottom = 8.dp)
+    )
+    FlowColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+        repeat(6) { index ->
+            Text(text = "Column Item $index", modifier = Modifier.padding(8.dp))
+        }
+    }
+}
+
+@Composable
+fun GridExample() {
+    Text(
+        text = "Grid Example",
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.padding(bottom = 8.dp)
+    )
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(150.dp),
+        contentPadding = PaddingValues(8.dp)
+    ) {
+        items(6) { index ->
+            Card(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(4.dp)
+            ) {
+                Text(
+                    text = "Grid Item $index",
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ControlExamples() {
+    Text(
+        text = "Controls Example",
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.padding(bottom = 8.dp)
+    )
+
+    var checked by remember { mutableStateOf(false) }
+    var sliderValue by remember { mutableStateOf(0.5f) }
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Switch(
+            checked = checked,
+            onCheckedChange = { checked = it },
+            modifier = Modifier.padding(8.dp)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Slider(
+            value = sliderValue,
+            onValueChange = { sliderValue = it },
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
+    }
+}
+
+
