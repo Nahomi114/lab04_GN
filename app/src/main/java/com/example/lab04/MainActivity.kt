@@ -177,7 +177,7 @@ fun DefaultPreview() {
 @Composable
 fun MyUpdatedTextComponent() {
     Text(
-        text = "Updated Text",
+        text = "Actualizar texto",
         style = TextStyle(
             color = Color.Blue,
             fontSize = 20.sp,
