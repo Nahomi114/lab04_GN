@@ -177,7 +177,11 @@ fun DefaultPreview() {
 @Composable
 fun MyUpdatedTextComponent() {
     Text(
+<<<<<<< HEAD
         text = "Actualizar texto",
+=======
+        text = "Modificar texto",
+>>>>>>> 34346dad6623e84901083348c243750020735322
         style = TextStyle(
             color = Color.Blue,
             fontSize = 20.sp,
